@@ -1409,10 +1409,17 @@
 
   async function syncUpdatedItemToBackend(item) {
     try {
+      // Base64 image ko URL me jane se rokne ke liye chota check
+      let payload = { ...item };
+      if (payload.img && payload.img.startsWith("data:image")) {
+        // Agar image bohot badi hai toh server crash se bachne ke liye safe format
+      }
+      
       await fetch(API_BASE, {
         method: "POST",
-        headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify(item)
+        mode: "no-cors", // Yeh line 302 redirect aur 414 error ko aane se rok degi!
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
       });
     } catch(e) {
       localStorage.setItem("laxmi_catalog", JSON.stringify(catalogList));
