@@ -1210,10 +1210,11 @@
 </div>
 
 <script>
-  const API_BASE = "https://script.google.com/macros/s/AKfycbxa_ZTcDSb_-itL1Nmylxw9emzknuAX-403t9Jwr61owBZU-fOhU-AZC4NrGzaHw_dOxg/exec";
+  // Yahan apna Google Apps Script ka URL dalein
+  const API_BASE = "YAHAN_APNA_APPS_SCRIPT_URL_PASTE_KAREIN";
 
   const defaultCatalogData = [
-    { id: 1, name: "JK11", category: "Jharkhand Lace", price: 62, meter: 20, img: "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?w=600&q=85", colors: ["Gold", "Silver", "Pani", "Mett", "gfeghfc"] },
+    { id: 1, name: "JK11", category: "Jharkhand Lace", price: 62, meter: 20, img: "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?w=600&q=85", colors: ["Gold", "Silver", "Pani", "Mett"] },
     { id: 2, name: "Chameli-47", category: "Embroidery", price: 48, meter: 20, img: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&q=85", colors: ["Multi", "Red", "Navy", "Gold"] },
     { id: 3, name: "Crystal-KP", category: "Heavy Crystal", price: 95, meter: 25, img: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=600&q=85", colors: ["Multi", "Red", "Navy", "Gold"] },
     { id: 4, name: "Jhalar-88", category: "Jhalar", price: 34, meter: 18, img: "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=600&q=85", colors: ["Multi", "Red", "Navy", "Gold"] }
@@ -1254,20 +1255,25 @@
     setTimeout(() => t.classList.remove('show'), 2200);
   }
 
+  // 414 Error aur Data Fetching Fix
   async function fetchDesigns() {
     try {
-      const res = await fetch(API_BASE);
+      const res = await fetch(API_BASE, { method: "GET" });
       if (res.ok) {
-        catalogList = await res.json();
+        const textData = await res.text();
+        catalogList = JSON.parse(textData);
+        if (!Array.isArray(catalogList)) catalogList = defaultCatalogData;
         localStorage.setItem("laxmi_catalog", JSON.stringify(catalogList));
         renderCatalogGrid(getFilteredDesigns());
         showToast("Live Catalog Loaded!");
+      } else {
+        throw new Error("Server error");
       }
     } catch (err) {
-      console.warn("Backend offline, using fallback:", err);
+      console.warn("Using local cache fallback:", err);
       catalogList = JSON.parse(localStorage.getItem("laxmi_catalog")) || defaultCatalogData;
       renderCatalogGrid(getFilteredDesigns());
-      showToast("⚠️ Offline Mode (Backend start karein)");
+      showToast("⚠️ Offline Mode Active");
     }
   }
 
@@ -1405,7 +1411,7 @@
     try {
       await fetch(API_BASE, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
         body: JSON.stringify(item)
       });
     } catch(e) {
@@ -1664,13 +1670,13 @@
   function snapPhotoFromCamera() {
     const video = document.getElementById("camera-video");
     const canvas = document.createElement("canvas");
-    canvas.width = 650;
-    canvas.height = 800;
+    canvas.width = 450;
+    canvas.height = 550;
     const ctx = canvas.getContext("2d");
 
-    ctx.drawImage(video, 0, 0, video.videoWidth, video.videoHeight, 0, 0, 650, 800);
+    ctx.drawImage(video, 0, 0, video.videoWidth, video.videoHeight, 0, 0, 450, 550);
 
-    currentActivePhotoBase64 = canvas.toDataURL("image/jpeg", 0.95);
+    currentActivePhotoBase64 = canvas.toDataURL("image/jpeg", 0.8);
     document.getElementById("admin-photo-preview").src = currentActivePhotoBase64;
     closeLiveCamera();
     showToast("📸 HD Photo capture ho gayi!");
@@ -1706,8 +1712,8 @@
   function finalizeGalleryCrop() {
     const scale = parseFloat(document.getElementById("zoom-slider").value) || 1;
     const canvas = document.createElement("canvas");
-    canvas.width = 650;
-    canvas.height = 800;
+    canvas.width = 450;
+    canvas.height = 550;
     const ctx = canvas.getContext("2d");
 
     const minDim = Math.min(rawUploadedImage.width, rawUploadedImage.height);
@@ -1715,9 +1721,9 @@
     const startX = (rawUploadedImage.width - cropDim) / 2;
     const startY = (rawUploadedImage.height - cropDim) / 2;
 
-    ctx.drawImage(rawUploadedImage, startX, startY, cropDim, cropDim, 0, 0, 650, 800);
+    ctx.drawImage(rawUploadedImage, startX, startY, cropDim, cropDim, 0, 0, 450, 550);
 
-    currentActivePhotoBase64 = canvas.toDataURL("image/jpeg", 0.95);
+    currentActivePhotoBase64 = canvas.toDataURL("image/jpeg", 0.8);
     document.getElementById("admin-photo-preview").src = currentActivePhotoBase64;
     closeCropperModal();
     showToast("✅ HD Image crop ho gayi!");
@@ -1750,10 +1756,11 @@
     try {
       const res = await fetch(API_BASE, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
         body: JSON.stringify(newDesign)
       });
-      if (res.ok) {
+      const result = await res.json();
+      if (result.success || res.ok) {
         showToast("✅ Nayi Design server database me save hui!");
         document.getElementById("admin-name").value = "";
         await fetchDesigns();
