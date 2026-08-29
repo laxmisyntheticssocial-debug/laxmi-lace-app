@@ -1210,7 +1210,7 @@
 </div>
 
 <script>
-  const API_BASE = "https://script.google.com/macros/s/AKfycbzKX7y8tgOop1AlTODGAVmS3dfGdPRkpR1syGvwZNd83npr1dVejcyD8K-pJ29lUCzW-Q/exec";
+  const API_BASE = "https://script.google.com/macros/s/AKfyсbyas6uKjoAnAGNRWHT4Myxl3zV_I4t83bQXfk8waY8N8K_o0nBwk-bkFmGG5C8PjhWElOw/exec";
 
   const defaultCatalogData = [
     { id: 1, name: "JK11", category: "Jharkhand Lace", price: 62, meter: 20, img: "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?w=600&q=85", colors: ["Gold", "Silver", "Pani", "Mett", "gfeghfc"] },
@@ -1256,7 +1256,7 @@
 
   async function fetchDesigns() {
     try {
-      const res = await fetch(`${API_BASE}/designs`);
+      const res = await fetch(API_BASE);
       if (res.ok) {
         catalogList = await res.json();
         localStorage.setItem("laxmi_catalog", JSON.stringify(catalogList));
@@ -1345,7 +1345,6 @@
     renderCatalogGrid(getFilteredDesigns());
   }
 
-  // --- DETAIL & PERSISTENT COLOR MEMORY SYSTEM ---
   function openDetail(item) {
     currentDetailItem = item;
     document.getElementById("detail-title").textContent = item.name;
@@ -1404,7 +1403,7 @@
 
   async function syncUpdatedItemToBackend(item) {
     try {
-      await fetch(`${API_BASE}/designs`, {
+      await fetch(API_BASE, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(item)
@@ -1531,7 +1530,6 @@
     updateHubCounts();
   }
 
-  // --- UNIFIED ORDER/CHALLAN HUB TABS & HISTORY ---
   function switchHubTab(tabName) {
     document.querySelectorAll('.hub-switch-btn').forEach(b => b.classList.remove('active'));
     document.querySelectorAll('.hub-content-section').forEach(s => s.classList.remove('active'));
@@ -1615,7 +1613,6 @@
     renderA4ChallanView(data.challanNo, data.partyName, data.address, data.phone, data.gst, data.transport, data.dateStr, data.items);
   }
 
-  // --- POPUP INPUT TRIGGERS ---
   function openOrderFormInputModal() {
     if (selectedOrderItems.length === 0) {
       showToast("Pehle catalog se designs select karein!");
@@ -1637,7 +1634,6 @@
     document.getElementById("modal-challan-inputs").style.display = "none";
   }
 
-  // --- CAMERA & STUDIO LOGIC ---
   async function openLiveCamera() {
     try {
       mediaStream = await navigator.mediaDevices.getUserMedia({
@@ -1727,7 +1723,6 @@
     showToast("✅ HD Image crop ho gayi!");
   }
 
-  // --- SAVE DESIGN PERMANENTLY TO PYTHON BACKEND ---
   async function submitDesign() {
     const name = document.getElementById("admin-name").value.trim();
     const price = parseFloat(document.getElementById("admin-price").value) || 45;
@@ -1753,7 +1748,7 @@
     };
 
     try {
-      const res = await fetch(`${API_BASE}/designs`, {
+      const res = await fetch(API_BASE, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newDesign)
@@ -1774,7 +1769,6 @@
     }
   }
 
-  // --- STRICT PAGINATION: EXACT MAX 4 DESIGNS PER PAGE WITH HEIGHT PACKING ---
   function paginateCompactOrderForm(items) {
     const pages = [];
     const MAX_DESIGNS_PER_PAGE = 4;
@@ -1840,7 +1834,6 @@
     return pages;
   }
 
-  // --- PROCESS AND SAVE ORDER FORM ---
   function processAndGenerateOrderForm() {
     const orderNo = document.getElementById("of-order-no").value || "200";
     const partyName = document.getElementById("of-party-name").value || "ketan bhai oman";
@@ -2006,7 +1999,6 @@
     document.getElementById("doc-preview-modal").style.display = "flex";
   }
 
-  // --- PROCESS AND SAVE DELIVERY CHALLAN ---
   function processAndGenerateChallan() {
     const challanNo = document.getElementById("dc-challan-no").value || "DC-001";
     const partyName = document.getElementById("dc-party-name").value || "Walk-in Party";
@@ -2134,7 +2126,6 @@
     document.getElementById("doc-preview-modal").style.display = "flex";
   }
 
-  // --- ONE-CLICK WHATSAPP SHARE SYSTEM ---
   function shareCurrentDocOnWhatsApp() {
     if (!currentActiveDocData) {
       showToast("Koi active document nahi mila!");
