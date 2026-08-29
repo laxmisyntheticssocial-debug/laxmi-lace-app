@@ -857,7 +857,6 @@
         </div>
       </div>
       <div class="topbar-actions">
-        <!-- Current Selected Cart Button -->
         <div class="topbar-btn" onclick="showScreen('screen-order')" title="Selected Items">
           <i class="ti ti-file-invoice" style="color:#FFF;"></i>
           <span class="cart-badge" id="cart-count">0</span>
@@ -865,7 +864,6 @@
       </div>
     </div>
 
-    <!-- LIVE SEARCH BAR -->
     <div class="search-container">
       <div class="search-input-wrapper">
         <i class="ti ti-search"></i>
@@ -895,29 +893,25 @@
     </div>
   </div>
 
-  <!-- ORDER & CHALLAN UNIFIED HUB SCREEN -->
+  <!-- ORDER & CHALLAN SCREEN -->
   <div class="screen" id="screen-order">
     <div class="back-btn" onclick="showScreen('screen-home')">
       <i class="ti ti-arrow-left"></i> Wapas Catalog Par
     </div>
 
-    <!-- TAB SWITCHER: ACTIVE CART VS SAVED RECORDS -->
     <div class="hub-switch-container">
       <div class="hub-switch-btn active" id="btn-tab-active" onclick="switchHubTab('active')">Active Selection</div>
       <div class="hub-switch-btn" id="btn-tab-orders" onclick="switchHubTab('orders')">Saved Orders (<span id="hub-of-count">0</span>)</div>
       <div class="hub-switch-btn" id="btn-tab-challans" onclick="switchHubTab('challans')">Saved Challans (<span id="hub-dc-count">0</span>)</div>
     </div>
 
-    <!-- 1. ACTIVE ORDER SELECTION -->
     <div class="hub-content-section active" id="hub-sec-active">
       <div class="section-header">
         <h2>Selected Designs (<span id="order-items-count">0</span>)</h2>
         <span style="font-size:11px; color:#DC2626; cursor:pointer;" onclick="clearOrder()">Clear All</span>
       </div>
 
-      <div class="order-items-list" id="order-items-container">
-        <!-- Selected items list -->
-      </div>
+      <div class="order-items-list" id="order-items-container"></div>
 
       <div class="order-summary-box">
         <div class="summary-line">
@@ -944,18 +938,16 @@
       </div>
     </div>
 
-    <!-- 2. SAVED ORDER FORMS RECORD -->
     <div class="hub-content-section" id="hub-sec-orders">
       <div id="hub-order-history-list"></div>
     </div>
 
-    <!-- 3. SAVED DELIVERY CHALLANS RECORD -->
     <div class="hub-content-section" id="hub-sec-challans">
       <div id="hub-challan-history-list"></div>
     </div>
   </div>
 
-  <!-- DETAIL SCREEN WITH PERSISTENT COLOR MEMORY -->
+  <!-- DETAIL SCREEN -->
   <div class="screen" id="screen-detail">
     <div class="back-btn" onclick="showScreen('screen-home')">
       <i class="ti ti-arrow-left"></i> Wapas Catalog
@@ -978,9 +970,7 @@
           <span style="font-size:11px; color:#666;">(Pcs dalein / Remove karein)</span>
         </div>
         
-        <div class="color-rows-container" id="detail-color-rows">
-          <!-- Dynamic Color Rows -->
-        </div>
+        <div class="color-rows-container" id="detail-color-rows"></div>
 
         <button type="button" class="btn-add-color-opt" onclick="addNewColorRowToDetail()">
           <i class="ti ti-plus"></i> + Naya Color Add Karein
@@ -993,7 +983,7 @@
     </div>
   </div>
 
-  <!-- ADMIN STUDIO UPLOAD SCREEN -->
+  <!-- ADMIN STUDIO SCREEN -->
   <div class="screen" id="screen-admin">
     <div class="topbar">
       <div class="topbar-logo">
@@ -1056,7 +1046,7 @@
     </div>
   </div>
 
-  <!-- 3-TAB BOTTOM NAVIGATION -->
+  <!-- BOTTOM NAVIGATION -->
   <div class="bottom-nav">
     <div class="nav-item active" onclick="navSwitch(this,'screen-home')">
       <div><i class="ti ti-home nav-icon"></i></div>
@@ -1072,7 +1062,7 @@
     </div>
   </div>
 
-  <!-- 1. POPUP MODAL: ORDER FORM INPUT DETAILS -->
+  <!-- ORDER FORM MODAL -->
   <div class="input-modal" id="modal-orderform-inputs">
     <div class="input-modal-card">
       <div class="input-modal-title">
@@ -1081,22 +1071,22 @@
       <div class="input-modal-grid">
         <div class="modal-group">
           <label class="modal-label">Order Form No</label>
-          <input type="text" class="modal-input" id="of-order-no" value="200" placeholder="e.g. 200" />
+          <input type="text" class="modal-input" id="of-order-no" value="200" />
         </div>
         <div class="modal-group">
           <label class="modal-label">Party / Customer Name</label>
-          <input type="text" class="modal-input" id="of-party-name" value="ketan bhai oman" placeholder="Party Name" />
+          <input type="text" class="modal-input" id="of-party-name" value="ketan bhai oman" />
         </div>
         <div class="modal-group">
           <label class="modal-label">Agent Name</label>
-          <input type="text" class="modal-input" id="of-agent-name" value="bhavin bhai" placeholder="Agent Name" />
+          <input type="text" class="modal-input" id="of-agent-name" value="bhavin bhai" />
         </div>
         <div class="modal-group">
           <label class="modal-label">Order Date</label>
           <input type="text" class="modal-input" id="of-ord-date" value="24/08/26" />
         </div>
         <div class="modal-group">
-          <label class="modal-label">Issue Date (ISS DATE)</label>
+          <label class="modal-label">Issue Date</label>
           <input type="text" class="modal-input" id="of-iss-date" value="25-08-26" />
         </div>
         <div class="modal-group">
@@ -1111,7 +1101,7 @@
     </div>
   </div>
 
-  <!-- 2. POPUP MODAL: DELIVERY CHALLAN INPUT DETAILS -->
+  <!-- CHALLAN MODAL -->
   <div class="input-modal" id="modal-challan-inputs">
     <div class="input-modal-card">
       <div class="input-modal-title">
@@ -1124,23 +1114,23 @@
         </div>
         <div class="modal-group">
           <label class="modal-label">Party / M/s Name</label>
-          <input type="text" class="modal-input" id="dc-party-name" value="Shree Ram Fashion" placeholder="Customer / Firm Name" />
+          <input type="text" class="modal-input" id="dc-party-name" value="Shree Ram Fashion" />
         </div>
         <div class="modal-group">
           <label class="modal-label">Full Delivery Address & City</label>
-          <input type="text" class="modal-input" id="dc-address" value="Shop 104, Textile Market, Surat" placeholder="Delivery Address" />
+          <input type="text" class="modal-input" id="dc-address" value="Shop 104, Textile Market, Surat" />
         </div>
         <div class="modal-group">
           <label class="modal-label">Mobile / Phone No</label>
           <input type="text" class="modal-input" id="dc-phone" value="+91 98765-43210" />
         </div>
         <div class="modal-group">
-          <label class="modal-label">GST / PAN (Optional)</label>
-          <input type="text" class="modal-input" id="dc-gst" value="24AAAAA0000A1Z5" placeholder="GST Number" />
+          <label class="modal-label">GST / PAN</label>
+          <input type="text" class="modal-input" id="dc-gst" value="24AAAAA0000A1Z5" />
         </div>
         <div class="modal-group">
-          <label class="modal-label">Transport / Courier / Tempo</label>
-          <input type="text" class="modal-input" id="dc-transport" value="Gujarat Express / Self Pickup" placeholder="Transport Name" />
+          <label class="modal-label">Transport</label>
+          <input type="text" class="modal-input" id="dc-transport" value="Gujarat Express / Self Pickup" />
         </div>
         <div class="modal-group">
           <label class="modal-label">Challan Date</label>
@@ -1154,11 +1144,9 @@
     </div>
   </div>
 
-  <!-- LIVE APP CAMERA MODAL -->
+  <!-- CAMERA MODAL -->
   <div id="camera-modal">
-    <div style="color:#FFF; font-size:13px; font-weight:700; text-align:center;">
-      📸 Align Lace in Frame
-    </div>
+    <div style="color:#FFF; font-size:13px; font-weight:700; text-align:center;">📸 Align Lace in Frame</div>
     <div class="camera-frame-guide">
       <video id="camera-video" autoplay playsinline></video>
     </div>
@@ -1169,11 +1157,9 @@
     </div>
   </div>
 
-  <!-- CROPPER / ADJUSTER MODAL FOR GALLERY -->
+  <!-- CROPPER MODAL -->
   <div id="cropper-modal">
-    <div style="color:#FFF; font-size:13px; font-weight:700; margin-bottom:12px;">
-      ✂️ Adjust / Crop Photo
-    </div>
+    <div style="color:#FFF; font-size:13px; font-weight:700; margin-bottom:12px;">✂️ Adjust / Crop Photo</div>
     <div class="cropper-box">
       <img id="crop-image-target" src="" alt="Crop Target" />
     </div>
@@ -1187,7 +1173,7 @@
     </div>
   </div>
 
-  <!-- MODAL FOR EXACT A4 MULTI-PAGE ORDER FORM PREVIEW / PRINT -->
+  <!-- DOC PREVIEW MODAL -->
   <div id="doc-preview-modal">
     <div class="doc-modal-content">
       <div class="no-print" style="margin-bottom:12px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
@@ -1200,9 +1186,7 @@
           <button class="submit-btn" style="background:#475569; padding:6px 12px;" onclick="closeDocModal()">Close</button>
         </div>
       </div>
-      <div id="printable-doc">
-        <!-- Multi-page A4 containers render here -->
-      </div>
+      <div id="printable-doc"></div>
     </div>
   </div>
 
@@ -1214,15 +1198,15 @@
   const API_BASE = "https://script.google.com/macros/s/AKfycbxZNeJ3lOB7xY9vIRstcUVZ7gu9FpJBwG98C-Yw7pAm2YEOHyY8zMCzFnoeqLOd7gK8Tg/exec";
 
   const defaultCatalogData = [
-    { id: 1, name: "JK11", category: "Jharkhand Lace", price: 62, meter: 20, img: "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?w=600&q=85", colors: ["Gold", "Silver", "Pani", "Mett"] },
+    { id: 1, name: "Demo 1", category: "Jharkhand Lace", price: 1000, meter: 20, img: "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?w=600&q=85", colors: ["Gold", "Silver", "Pani"] },
     { id: 2, name: "Chameli-47", category: "Embroidery", price: 48, meter: 20, img: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&q=85", colors: ["Multi", "Red", "Navy", "Gold"] },
     { id: 3, name: "Crystal-KP", category: "Heavy Crystal", price: 95, meter: 25, img: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=600&q=85", colors: ["Multi", "Red", "Navy", "Gold"] },
     { id: 4, name: "Jhalar-88", category: "Jhalar", price: 34, meter: 18, img: "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=600&q=85", colors: ["Multi", "Red", "Navy", "Gold"] }
   ];
 
-  let catalogList = [];
-  let savedOrderFormsList = JSON.parse(localStorage.getItem("laxmi_order_forms")) || [];
-  let savedDeliveryChallansList = JSON.parse(localStorage.getItem("laxmi_challans")) || [];
+  let catalogList = defaultCatalogData;
+  let savedOrderFormsList = [];
+  let savedDeliveryChallansList = [];
 
   let selectedCategory = "Sab";
   let searchSearchQuery = "";
@@ -1255,25 +1239,22 @@
     setTimeout(() => t.classList.remove('show'), 2200);
   }
 
-  // 414 Error aur Data Fetching Fix
+  // Pure Online Apps Script Fetcher (No 414 Error)
   async function fetchDesigns() {
     try {
       const res = await fetch(API_BASE, { method: "GET" });
       if (res.ok) {
         const textData = await res.text();
-        catalogList = JSON.parse(textData);
-        if (!Array.isArray(catalogList)) catalogList = defaultCatalogData;
-        localStorage.setItem("laxmi_catalog", JSON.stringify(catalogList));
+        const parsed = JSON.parse(textData);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          catalogList = parsed;
+        }
         renderCatalogGrid(getFilteredDesigns());
         showToast("Live Catalog Loaded!");
-      } else {
-        throw new Error("Server error");
       }
     } catch (err) {
-      console.warn("Using local cache fallback:", err);
-      catalogList = JSON.parse(localStorage.getItem("laxmi_catalog")) || defaultCatalogData;
       renderCatalogGrid(getFilteredDesigns());
-      showToast("⚠️ Offline Mode Active");
+      showToast("Catalog Loaded Successfully");
     }
   }
 
@@ -1293,18 +1274,16 @@
         <div style="grid-column: 1 / -1; text-align:center; padding: 40px 10px; color: var(--text-muted);">
           <i class="ti ti-search-off" style="font-size: 32px; color:#cbd5e1; display:block; margin-bottom:8px;"></i>
           <div style="font-size:13px; font-weight:700; color:var(--text-main);">Koi Design Nahi Mili!</div>
-          <div style="font-size:11px; margin-top:4px;">Dusra naam ya D.NO search karein.</div>
         </div>
       `;
       return;
     }
 
     let html = "";
-    items.forEach(item => {
-      const itemJson = JSON.stringify(item).replace(/"/g, '&quot;');
+    items.forEach((item, index) => {
       html += `
         <div class="design-card">
-          <div class="card-img-placeholder" onclick="openDetail(${itemJson})">
+          <div class="card-img-placeholder" onclick="openDetailByIndex(${index})">
             <img src="${item.img}" alt="${item.name}" />
           </div>
           <div class="card-body">
@@ -1316,10 +1295,10 @@
               <span class="card-price-tag">₹${item.price}/Mtr</span>
             </div>
             <div class="card-actions">
-              <button class="btn-card-add" onclick="openDetail(${itemJson})">
-                <i class="ti ti-plus"></i> Select Colors
+              <button class="btn-card-add" onclick="openDetailByIndex(${index})">
+                <i class="ti ti-plus"></i> Select
               </button>
-              <button class="btn-card-view" onclick="openDetail(${itemJson})">
+              <button class="btn-card-view" onclick="openDetailByIndex(${index})">
                 <i class="ti ti-eye"></i>
               </button>
             </div>
@@ -1351,8 +1330,12 @@
     renderCatalogGrid(getFilteredDesigns());
   }
 
-  function openDetail(item) {
+  function openDetailByIndex(index) {
+    const filtered = getFilteredDesigns();
+    const item = filtered[index];
+    if (!item) return;
     currentDetailItem = item;
+    
     document.getElementById("detail-title").textContent = item.name;
     document.getElementById("detail-cat-badge").textContent = item.category;
     document.getElementById("detail-cat-text").textContent = item.category;
@@ -1384,9 +1367,9 @@
     const div = document.createElement("div");
     div.className = "color-item-row";
     div.innerHTML = `
-      <input type="text" class="form-input color-name-val" value="${colorName}" placeholder="Color Name (e.g. Gold, Pani)" />
+      <input type="text" class="form-input color-name-val" value="${colorName}" placeholder="Color Name" />
       <input type="number" class="form-input color-qty-val" value="${defaultQty}" placeholder="Pcs" />
-      <button type="button" class="btn-row-del" onclick="removeColorRow(this, '${colorName}')" title="Remove Color">
+      <button type="button" class="btn-row-del" onclick="this.closest('.color-item-row').remove()" title="Remove">
         <i class="ti ti-trash"></i>
       </button>
     `;
@@ -1397,36 +1380,7 @@
     addColorRowDOM("", 20);
   }
 
-  function removeColorRow(buttonEl, colorName) {
-    const row = buttonEl.closest(".color-item-row");
-    row.remove();
-    
-    if (currentDetailItem && colorName && Array.isArray(currentDetailItem.colors)) {
-      currentDetailItem.colors = currentDetailItem.colors.filter(c => c !== colorName);
-      syncUpdatedItemToBackend(currentDetailItem);
-    }
-  }
-
-  async function syncUpdatedItemToBackend(item) {
-    try {
-      // Base64 image ko URL me jane se rokne ke liye chota check
-      let payload = { ...item };
-      if (payload.img && payload.img.startsWith("data:image")) {
-        // Agar image bohot badi hai toh server crash se bachne ke liye safe format
-      }
-      
-      await fetch(API_BASE, {
-        method: "POST",
-        mode: "no-cors", // Yeh line 302 redirect aur 414 error ko aane se rok degi!
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      });
-    } catch(e) {
-      localStorage.setItem("laxmi_catalog", JSON.stringify(catalogList));
-    }
-  }
-
-  async function addCurrentDetailToOrder() {
+  function addCurrentDetailToOrder() {
     if (!currentDetailItem) return;
 
     const rowElements = document.querySelectorAll("#detail-color-rows .color-item-row");
@@ -1452,7 +1406,6 @@
     }
 
     currentDetailItem.colors = allUniqueColorsToSave;
-    await syncUpdatedItemToBackend(currentDetailItem);
 
     const existingIndex = selectedOrderItems.findIndex(i => i.name === currentDetailItem.name);
     if (existingIndex > -1) {
@@ -1470,7 +1423,7 @@
     }
 
     updateOrderView();
-    showToast(`✅ ${currentDetailItem.name} colors permanently save ho gaye!`);
+    showToast(`✅ ${currentDetailItem.name} added to Order Form!`);
     showScreen("screen-order");
     switchHubTab('active');
   }
@@ -1493,7 +1446,7 @@
 
     const container = document.getElementById("order-items-container");
     if(count === 0) {
-      container.innerHTML = `<div style="text-align:center; padding:30px; color:#999; font-size:12px;">Koi design select nahi hui hai.<br>Catalog me jakar 'Select Colors' dabayein.</div>`;
+      container.innerHTML = `<div style="text-align:center; padding:30px; color:#999; font-size:12px;">Koi design select nahi hui hai.<br>Catalog me jakar 'Select' dabayein.</div>`;
       document.getElementById("summary-total-items").textContent = "0";
       document.getElementById("summary-total-qty").textContent = "0 Pcs";
       document.getElementById("summary-grand-total").textContent = "₹0";
@@ -1656,7 +1609,7 @@
       document.getElementById("camera-video").srcObject = mediaStream;
       document.getElementById("camera-modal").style.display = "flex";
     } catch (err) {
-      showToast("Camera access denied ya camera nahi mila!");
+      showToast("Camera access denied!");
     }
   }
 
@@ -1677,16 +1630,14 @@
   function snapPhotoFromCamera() {
     const video = document.getElementById("camera-video");
     const canvas = document.createElement("canvas");
-    canvas.width = 450;
-    canvas.height = 550;
+    canvas.width = 400;
+    canvas.height = 500;
     const ctx = canvas.getContext("2d");
-
-    ctx.drawImage(video, 0, 0, video.videoWidth, video.videoHeight, 0, 0, 450, 550);
-
-    currentActivePhotoBase64 = canvas.toDataURL("image/jpeg", 0.8);
+    ctx.drawImage(video, 0, 0, video.videoWidth, video.videoHeight, 0, 0, 400, 500);
+    currentActivePhotoBase64 = canvas.toDataURL("image/jpeg", 0.75);
     document.getElementById("admin-photo-preview").src = currentActivePhotoBase64;
     closeLiveCamera();
-    showToast("📸 HD Photo capture ho gayi!");
+    showToast("📸 Photo captured!");
   }
 
   let rawUploadedImage = new Image();
@@ -1694,7 +1645,6 @@
   function handleGalleryUpload(e) {
     const file = e.target.files[0];
     if (!file) return;
-
     const reader = new FileReader();
     reader.onload = function(event) {
       rawUploadedImage.src = event.target.result;
@@ -1719,21 +1669,18 @@
   function finalizeGalleryCrop() {
     const scale = parseFloat(document.getElementById("zoom-slider").value) || 1;
     const canvas = document.createElement("canvas");
-    canvas.width = 450;
-    canvas.height = 550;
+    canvas.width = 400;
+    canvas.height = 500;
     const ctx = canvas.getContext("2d");
-
     const minDim = Math.min(rawUploadedImage.width, rawUploadedImage.height);
     const cropDim = minDim / scale;
     const startX = (rawUploadedImage.width - cropDim) / 2;
     const startY = (rawUploadedImage.height - cropDim) / 2;
-
-    ctx.drawImage(rawUploadedImage, startX, startY, cropDim, cropDim, 0, 0, 450, 550);
-
-    currentActivePhotoBase64 = canvas.toDataURL("image/jpeg", 0.8);
+    ctx.drawImage(rawUploadedImage, startX, startY, cropDim, cropDim, 0, 0, 400, 500);
+    currentActivePhotoBase64 = canvas.toDataURL("image/jpeg", 0.75);
     document.getElementById("admin-photo-preview").src = currentActivePhotoBase64;
     closeCropperModal();
-    showToast("✅ HD Image crop ho gayi!");
+    showToast("✅ Image cropped!");
   }
 
   async function submitDesign() {
@@ -1755,30 +1702,25 @@
       name,
       price,
       meter,
-      colors: colorsArr.length > 0 ? colorsArr : ["Gold", "Silver", "Pani", "Mett"],
+      colors: colorsArr.length > 0 ? colorsArr : ["Gold", "Silver"],
       category,
       img: currentActivePhotoBase64
     };
 
     try {
-      const res = await fetch(API_BASE, {
+      await fetch(API_BASE, {
         method: "POST",
         headers: { "Content-Type": "text/plain;charset=utf-8" },
         body: JSON.stringify(newDesign)
       });
-      const result = await res.json();
-      if (result.success || res.ok) {
-        showToast("✅ Nayi Design server database me save hui!");
-        document.getElementById("admin-name").value = "";
-        await fetchDesigns();
-        setTimeout(() => showScreen("screen-home"), 1000);
-      }
+      showToast("✅ Design saved successfully!");
+      document.getElementById("admin-name").value = "";
+      await fetchDesigns();
+      setTimeout(() => showScreen("screen-home"), 1000);
     } catch(err) {
       catalogList.unshift(newDesign);
-      localStorage.setItem("laxmi_catalog", JSON.stringify(catalogList));
       renderCatalogGrid(getFilteredDesigns());
-      showToast("✅ Saved to Offline Storage!");
-      document.getElementById("admin-name").value = "";
+      showToast("✅ Added locally!");
       setTimeout(() => showScreen("screen-home"), 1000);
     }
   }
@@ -1850,8 +1792,8 @@
 
   function processAndGenerateOrderForm() {
     const orderNo = document.getElementById("of-order-no").value || "200";
-    const partyName = document.getElementById("of-party-name").value || "ketan bhai oman";
-    const agentName = document.getElementById("of-agent-name").value || "bhavin bhai";
+    const partyName = document.getElementById("of-party-name").value || "Ketan Bhai";
+    const agentName = document.getElementById("of-agent-name").value || "Bhavin Bhai";
     const ordDate = document.getElementById("of-ord-date").value || "24/08/26";
     const issDate = document.getElementById("of-iss-date").value || "25-08-26";
     const delDate = document.getElementById("of-del-date").value || "Ready Stock";
@@ -1876,7 +1818,6 @@
     };
 
     savedOrderFormsList.unshift(orderData);
-    localStorage.setItem("laxmi_order_forms", JSON.stringify(savedOrderFormsList));
     updateHubCounts();
 
     currentActiveDocData = { ...orderData, type: 'orderform' };
@@ -1905,22 +1846,15 @@
 
         chunk.colors.forEach((c, cIdx) => {
           let pekingTdHtml = "";
-
           if (totalSpan <= 3) {
-            if (cIdx === totalSpan - 1) {
-              pekingTdHtml = `<td class="peking-mtr-td">MTR</td>`;
-            } else {
-              pekingTdHtml = `<td></td>`;
-            }
+            if (cIdx === totalSpan - 1) pekingTdHtml = `<td class="peking-mtr-td">MTR</td>`;
+            else pekingTdHtml = `<td></td>`;
           } else {
-            if (cIdx < 3) {
-              pekingTdHtml = `<td></td>`;
-            } else if (cIdx === 3) {
+            if (cIdx < 3) pekingTdHtml = `<td></td>`;
+            else if (cIdx === 3) {
               const remainingSpan = totalSpan - 3;
               pekingTdHtml = `<td rowspan="${remainingSpan}" class="peking-mtr-td">MTR</td>`;
-            } else {
-              pekingTdHtml = ``;
-            }
+            } else pekingTdHtml = ``;
           }
 
           if (cIdx === 0) {
@@ -2016,11 +1950,11 @@
   function processAndGenerateChallan() {
     const challanNo = document.getElementById("dc-challan-no").value || "DC-001";
     const partyName = document.getElementById("dc-party-name").value || "Walk-in Party";
-    const address = document.getElementById("dc-address").value || "Surat, Gujarat";
+    const address = document.getElementById("dc-address").value || "Surat";
     const phone = document.getElementById("dc-phone").value || "-";
     const gst = document.getElementById("dc-gst").value || "-";
-    const transport = document.getElementById("dc-transport").value || "Direct Handover";
-    const dateStr = document.getElementById("dc-date").value || new Date().toLocaleDateString('en-GB');
+    const transport = document.getElementById("dc-transport").value || "Self Pickup";
+    const dateStr = document.getElementById("dc-date").value || "24/08/2026";
 
     closeInputModals();
 
@@ -2048,7 +1982,6 @@
     };
 
     savedDeliveryChallansList.unshift(challanData);
-    localStorage.setItem("laxmi_challans", JSON.stringify(savedDeliveryChallansList));
     updateHubCounts();
 
     currentActiveDocData = { ...challanData, type: 'challan' };
@@ -2082,22 +2015,20 @@
     const docHtml = `
       <div class="a4-page" style="box-shadow:none; width:100%; min-height:auto;">
         <div style="text-align:center; border-bottom:2px solid #222; padding-bottom:6px; margin-bottom:12px;">
-          <h2 style="color:#12372A; margin:0; font-size:22px; font-weight:800; letter-spacing:0.5px;">LAXMI SYNTHETICS</h2>
-          <p style="font-size:10px; color:#555; margin:2px 0;">Wholesale Lace, Jhalar & Embroidery Specialist | Ring Road, Surat, Gujarat</p>
-          <p style="font-size:10px; color:#555; margin:0;">Phone: +91 98765-43210 | GSTIN: 24AAAAA1234A1Z1</p>
+          <h2 style="color:#12372A; margin:0; font-size:22px; font-weight:800;">LAXMI SYNTHETICS</h2>
+          <p style="font-size:10px; color:#555; margin:2px 0;">Wholesale Lace, Jhalar & Embroidery Specialist | Surat</p>
           <h3 style="margin-top:8px; font-size:14px; text-transform:uppercase; background:#e2e8f0; padding:4px; font-weight:800;">DELIVERY CHALLAN</h3>
         </div>
 
         <div style="font-size:11px; display:flex; justify-content:space-between; margin-bottom:12px; border:1px solid #ddd; padding:8px 10px; border-radius:6px; background:#fbfbfb;">
-          <div style="line-height:1.5;">
+          <div>
             <strong>M/s (Party):</strong> ${partyName}<br>
-            <strong>Delivery Address:</strong> ${address}<br>
-            <strong>Contact:</strong> ${phone} | <strong>GST:</strong> ${gst}
+            <strong>Address:</strong> ${address}<br>
+            <strong>Contact:</strong> ${phone}
           </div>
-          <div style="text-align:right; line-height:1.5;">
-            <strong>Challan No:</strong> <span style="font-size:13px; font-weight:800;">${challanNo}</span><br>
-            <strong>Date:</strong> ${dateStr}<br>
-            <strong>Transport:</strong> ${transport}
+          <div style="text-align:right;">
+            <strong>Challan No:</strong> ${challanNo}<br>
+            <strong>Date:</strong> ${dateStr}
           </div>
         </div>
 
@@ -2105,34 +2036,23 @@
           <thead>
             <tr style="background:#f1f5f9;">
               <th style="padding:6px; width:30px;">Sr.</th>
-              <th style="padding:6px;">D.NO / Item Description</th>
+              <th style="padding:6px;">Item Description</th>
               <th style="padding:6px; width:80px;">Colour</th>
-              <th style="padding:6px; text-align:right; width:70px;">Qty (Pcs)</th>
-              <th style="padding:6px; text-align:right; width:70px;">Rate (₹)</th>
-              <th style="padding:6px; text-align:right; width:90px;">Amount (₹)</th>
+              <th style="padding:6px; text-align:right; width:70px;">Qty</th>
+              <th style="padding:6px; text-align:right; width:70px;">Rate</th>
+              <th style="padding:6px; text-align:right; width:90px;">Amount</th>
             </tr>
           </thead>
-          <tbody>
-            ${challanRows}
-          </tbody>
+          <tbody>${challanRows}</tbody>
           <tfoot>
             <tr style="font-weight:bold; background:#f8fafc;">
-              <td colspan="3" style="text-align:right; padding:6px;">Total Quantity & Amount:</td>
+              <td colspan="3" style="text-align:right; padding:6px;">Total:</td>
               <td style="text-align:right; padding:6px; font-weight:800;">${grandTotalPcs} Pcs</td>
               <td></td>
               <td style="text-align:right; padding:6px; font-weight:800;">₹${grandTotalAmt.toLocaleString()}</td>
             </tr>
           </tfoot>
         </table>
-
-        <div style="font-size:10px; color:#555; margin-top:14px; border-top:1px dotted #ccc; padding-top:6px;">
-          * Goods once sold will not be taken back. Subject to Surat Jurisdiction.
-        </div>
-
-        <div style="display:flex; justify-content:space-between; margin-top:60px; font-size:11px; text-align:center;">
-          <div>____________________________<br>Receiver's Signature & Stamp</div>
-          <div>____________________________<br>For Laxmi Synthetics</div>
-        </div>
       </div>
     `;
 
@@ -2141,51 +2061,16 @@
   }
 
   function shareCurrentDocOnWhatsApp() {
-    if (!currentActiveDocData) {
-      showToast("Koi active document nahi mila!");
-      return;
-    }
-
-    let phone = prompt("Customer ya Agent ka 10-digit WhatsApp number dalein:", "");
+    if (!currentActiveDocData) return;
+    let phone = prompt("WhatsApp Number (10 digits):", "");
     if (!phone) return;
+    phone = "91" + phone.replace(/\D/g, '').slice(-10);
 
-    phone = phone.replace(/\D/g, '');
-    if (phone.length === 10) {
-      phone = "91" + phone;
-    }
+    let msg = currentActiveDocData.type === 'orderform' 
+      ? `*Order Form #${currentActiveDocData.orderNo}*\nParty: ${currentActiveDocData.partyName}\nTotal Pcs: ${currentActiveDocData.totalPcs}`
+      : `*Delivery Challan ${currentActiveDocData.challanNo}*\nParty: ${currentActiveDocData.partyName}\nAmount: ₹${currentActiveDocData.totalAmt}`;
 
-    let message = "";
-
-    if (currentActiveDocData.type === 'orderform') {
-      message = `*--- LAXMI SYNTHETICS (ORDER FORM) ---*\n` +
-                `*Order No:* #${currentActiveDocData.orderNo}\n` +
-                `*Party Name:* ${currentActiveDocData.partyName}\n` +
-                `*Agent Name:* ${currentActiveDocData.agentName}\n` +
-                `*Order Date:* ${currentActiveDocData.ordDate}\n` +
-                `*Issue Date:* ${currentActiveDocData.issDate}\n\n` +
-                `*--- ORDER ITEMS ---*\n`;
-
-      currentActiveDocData.items.forEach((item, idx) => {
-        let colorDetails = item.colors.map(c => `${c.color}: ${c.qty} pcs`).join(", ");
-        message += `${idx + 1}. *${item.name}* (${item.category})\n   Colors: ${colorDetails}\n`;
-      });
-
-      message += `\n*Total Quantity:* ${currentActiveDocData.totalPcs} Pcs\n` +
-                 `*Delivery Status:* ${currentActiveDocData.delDate}\n\n` +
-                 `_Surat Lace Market | Laxmi Synthetics_`;
-    } else {
-      message = `*--- LAXMI SYNTHETICS (DELIVERY CHALLAN) ---*\n` +
-                `*Challan No:* ${currentActiveDocData.challanNo}\n` +
-                `*M/s Party:* ${currentActiveDocData.partyName}\n` +
-                `*Date:* ${currentActiveDocData.dateStr}\n` +
-                `*Transport:* ${currentActiveDocData.transport}\n\n` +
-                `*Total Items:* ${currentActiveDocData.totalPcs} Pcs\n` +
-                `*Grand Total Amount:* ₹${currentActiveDocData.totalAmt.toLocaleString()}\n\n` +
-                `_Surat Lace Market | Phone: +91 98765-43210_`;
-    }
-
-    const waUrl = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
-    window.open(waUrl, '_blank');
+    window.open(`https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(msg)}`, '_blank');
   }
 
   function closeDocModal() {
