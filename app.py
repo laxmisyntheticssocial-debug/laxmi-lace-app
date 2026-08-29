@@ -61,14 +61,23 @@ def upload_base64_to_drive(base64_str, filename):
         }
         
         media = MediaIoBaseUpload(io.BytesIO(img_bytes), mimetype='image/jpeg', resumable=True)
-        uploaded_file = service.files().create(body=file_metadata, media_body=media, fields='id').execute()
+        uploaded_file = service.files().create(
+            body=file_metadata, 
+            media_body=media, 
+            fields='id',
+            supportsAllDrives=True
+        ).execute()
         
         file_id = uploaded_file.get('id')
         
-        service.permissions().create(
-            fileId=file_id,
-            body={'type': 'anyone', 'role': 'viewer'}
-        ).execute()
+        try:
+            service.permissions().create(
+                fileId=file_id,
+                body={'type': 'anyone', 'role': 'viewer'},
+                supportsAllDrives=True
+            ).execute()
+        except Exception as perm_err:
+            print("Permission Warning:", perm_err)
 
         return f"https://lh3.googleusercontent.com/d/{file_id}"
     except Exception as e:
