@@ -1194,7 +1194,6 @@
 </div>
 
 <script>
-  // Yahan apna Google Apps Script ka URL dalein
   const API_BASE = "https://script.google.com/macros/s/AKfycbxZNeJ3lOB7xY9vIRstcUVZ7gu9FpJBwG98C-Yw7pAm2YEOHyY8zMCzFnoeqLOd7gK8Tg/exec";
 
   const defaultCatalogData = [
@@ -1239,7 +1238,6 @@
     setTimeout(() => t.classList.remove('show'), 2200);
   }
 
-  // Pure Online Apps Script Fetcher (No 414 Error)
   async function fetchDesigns() {
     try {
       const res = await fetch(API_BASE, { method: "GET" });
